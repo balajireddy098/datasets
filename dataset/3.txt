@@ -1,0 +1,91 @@
+EXPERIMENT-3
+AIM: Write Node JS program to create, access and modify an array.
+
+PROGRAMS:
+Creating an array:
+var arr = ['cat', 'dog', 'goat'];
+console.log(arr);
+ 
+
+Accessing through index:
+var arr = ['cat', 'dog', 'goat'];
+console.log(arr[0]);
+console.log(arr[1]);
+console.log(arr[2]);
+ 
+
+Array functions:
+
+indexOf()
+var arr = ['cat', 'dog', 'goat'];
+console.log(arr);
+var position = arr.indexOf("fish");
+console.log(position);
+console.log(arr.indexOf("goat"));
+ 
+
+lastIndexOf()
+var arr = ['cat', 'dog', 'goat','dog'];
+console.log(arr);
+var position = arr.lastIndexOf("fish");
+console.log(position);
+console.log(arr.lastIndexOf("dog"));
+ 
+
+push() and pop()
+const fruits = [];
+fruits.push("banana", "apple", "melon");
+console.log(fruits);
+console.log(fruits.length);
+fruits.push("grapes");
+console.log(fruits);
+console.log(fruits.pop());
+console.log(fruits);
+ 
+
+unshift()
+var arr = ['cat', 'dog', 'goat','dog'];
+console.log(arr);
+arr.unshift("cow");
+console.log(arr);
+ 
+
+shift()
+var arr = ['cat', 'dog', 'goat','dog'];
+console.log(arr);
+arr.shift();
+console.log(arr);
+ 
+
+
+
+
+sort()
+var arr = ['cat', 'dog', 'goat', 'dog', 'lion'];
+console.log(arr);
+console.log(arr.sort());
+ 
+
+reverse()
+var arr = ['cat', 'dog', 'goat', 'dog', 'lion'];
+console.log(arr);
+console.log(arr.reverse());
+ 
+
+concat()
+arr1 = ['orange', 'grapes'];
+arr2 = ['mango', 'kiwi', 'apple'];
+console.log(arr1);
+console.log(arr2);
+var new_arr = arr1.concat(arr2);
+console.log("Concatenated array is", new_arr);
+console.log("Concatenated array after sorting is", new_arr.sort());
+ 
+
+forEach()
+arr = ['jack fruit', 'grapes', 'banana', 'apple'];
+arr.forEach(function(i) {
+    console.log(i);
+});
+ 
+

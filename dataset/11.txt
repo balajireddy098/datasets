@@ -1,0 +1,124 @@
+app.component.html
+<h1>{{name | uppercase}}</h1>
+app.component.ts
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  name = 'angular';
+}
+ 
+
+Program-2:
+app.component.html
+<h1>{{tutionFee | currency:'INR':'symbol'}}</h1>
+app.component.ts
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  "tutionFee"=65000;
+}
+ 
+
+Program-3:
+app.component.html
+<h1>{{student | json}}</h1>
+app.component.ts
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  student = {
+    "Name":"Manohar",
+    "RollNo":532,
+    "branch":"CSE",
+    "Fee":"65000 + 5000"
+  }
+}
+ 
+
+Program-4:
+app.component.html
+<h2>The hero's birthday is {{ birthday | date }}</h2>
+app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  birthday = new Date(1999,9,10);//Oct 10, 1999
+}
+ 
+
+Program-5:
+app.component.html
+<h2>Original Number is {{ num }}</h2>
+<h2>Percentage is {{ num | percent }}</h2>
+app.component.ts
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  num = 0.972
+}
+ 
+
+Program-6:
+app.component.html
+<h2>Original Array is "{{ arr }}"</h2>
+<h2>Sliced Array is "{{ arr | slice:1:4 }}"</h2>
+app.component.ts
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  arr = ['apple','mango','melon','orange','grape'];
+}
+ 
+
+Creating custom pipes:
+Syntax: ng generate pipe pipename (or) ng g p pipename
+     
+app.component.html
+<h1>{{wish | test}}</h1>
+
+app.component.ts
+import { Component } from '@angular/core';
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.css'
+})
+export class AppComponent {
+  wish = "Good Morning!!";
+}
+
+test.pipe.ts
+import { Pipe, PipeTransform } from '@angular/core';
+@Pipe({
+  name: 'test'
+})
+export class TestPipe implements PipeTransform {
+  transform(value: unknown, ...args: unknown[]): unknown {
+    return "Hello Everyone!!..";
+  }
+}

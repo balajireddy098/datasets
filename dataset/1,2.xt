@@ -1,0 +1,176 @@
+test> use HMS_532
+output: switched to db HMS_532
+
+1.Creation of Hospital Collection:
+HMS_532> db.createCollection("Hospital")
+Output: { ok: 1 }
+
+Inserting Documents:
+Using insertOne()
+HMS_532> db.Hospital.insertOne({'H_id':'01','Name':'Sri Rama Nursing Home', 'location' :'Gudivada','no.of doctors':'50','no.of nurses':'60','no.of patients':'300','no.of rooms':'50'})
+Output:
+{
+  acknowledged: true,
+  insertedId: ObjectId('65ca4c6e02eae18cdd4c6ad1')
+}
+Using insertMany()
+HMS_532> db.Hospital.insertMany([{'H_id':'02','Name':'Annapurna Hospitals', 'location':'Vijayawada','no.of doctors':'60','no.of nurses':'70','no.of patients':'450','no.of rooms':'150'},{'H_id':'03','Name':'Praja Vaidyashala','location':'Gudivada','no.of doctors':'35','no.of nurses':'50','no.of patients':'250','no.of rooms':'30'}])
+Output: 
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65ca4e8002eae18cdd4c6ad2'),
+    '1': ObjectId('65ca4e8002eae18cdd4c6ad3')
+  }
+}
+
+Retrieving Documents:
+HMS_532> db.Hospital.find({})
+Output:
+{
+  _id: ObjectId('65ca4c6e02eae18cdd4c6ad1'),
+  H_id: '01',
+  Name: 'Sri Rama Nursing Home',
+  location: 'Gudivada',
+  'no.of doctors': '50',
+  'no.of nurses': '60',
+  'no.of patients': '300',
+  'no.of rooms': '50'
+}
+{
+  _id: ObjectId('65ca4e8002eae18cdd4c6ad2'),
+  H_id: '02',
+  Name: 'Annapurna Hospitals',
+  location: 'Vijayawada',
+  'no.of doctors': '60',
+  'no.of nurses': '70',
+  'no.of patients': '450',
+  'no.of rooms': '150'
+}
+{
+  _id: ObjectId('65ca4e8002eae18cdd4c6ad3'),
+  H_id: '03',
+  Name: 'Praja Vaidyashala',
+  location: 'Gudivada',
+  'no.of doctors': '35',
+  'no.of nurses': '50',
+  'no.of patients': '250',
+  'no.of rooms': '30'
+}
+
+Updating Documents:
+HMS_532> db.Hospital.updateOne({'Name':'Annapurna Hospitals'},{$set:{'Name':'Sri Annapurna Hospitals'}})
+Output:
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+HMS_532> db.Hospital.find({'H_id':'02'})
+{
+  _id: ObjectId('65ca4e8002eae18cdd4c6ad2'),
+  H_id: '02',
+  Name: 'Sri Annapurna Hospitals',
+  location: 'Vijayawada',
+  'no.of doctors': '60',
+  'no.of nurses': '70',
+  'no.of patients': '450',
+  'no.of rooms': '150'
+}
+
+Deleting Documents:
+HMS_532> db.Hospital.deleteOne({'H_id':'03'})
+Output:
+{
+  acknowledged: true,
+  deletedCount: 1
+}
+
+2.Creation of Doctor Collection:
+HMS_532> db.createCollection("Doctor")
+Output: { ok: 1 }
+
+Inserting Documents:
+Using insertOne()
+HMS_532> db.Doctor.insertOne({'D_id':'001','Name':'Anand Raju','Specialization':'Dermatology','Gender':'Male','Exp':'6 yrs','Age':'30','op_cost':'250'})
+Output:
+{
+  acknowledged: true,
+  insertedId: ObjectId('65ca52b102eae18cdd4c6ad4')
+}
+Using insertMany()
+HMS_532> db.Doctor.insertMany([{'D_id':'007','Name':'Naruto Uzumaki','Specialization':'Cardiology','Gender':'Male','Exp':'7 yrs','Age':'32','op_cost':'300'},{'D_id':'002','Name':'Lakshmi','Specialization':'Gynacology','Gender':'Female','Exp':'15 yrs','Age':'42','op_cost':'350'}])
+Output:
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('65ca53c802eae18cdd4c6ad5'),
+    '1': ObjectId('65ca53c802eae18cdd4c6ad6')
+  }
+}
+
+Retrieving Documents:
+HMS_532> db.Doctor.find({})
+Output:
+{
+  _id: ObjectId('65ca52b102eae18cdd4c6ad4'),
+  D_id: '001',
+  Name: 'Anand Raju',
+  Specialization: 'Dermatology',
+  Gender: 'Male',
+  Exp: '6 yrs',
+  Age: '30',
+  op_cost: '250'
+}
+{
+  _id: ObjectId('65ca53c802eae18cdd4c6ad5'),
+  D_id: '007',
+  Name: 'Naruto Uzumaki',
+  Specialization: 'Cardiology',
+  Gender: 'Male',
+  Exp: '7 yrs',
+  Age: '32',
+  op_cost: '300'
+}
+{
+  _id: ObjectId('65ca53c802eae18cdd4c6ad6'),
+  D_id: '002',
+  Name: 'Lakshmi',
+  Specialization: 'Gynacology',
+  Gender: 'Female',
+  Exp: '15 yrs',
+  Age: '42',
+  op_cost: '350'
+}
+
+Updating Documents:
+HMS_532> db.Doctor.updateOne({'Name':'Anand Raju'},{$set:{'Age':'35'}})
+Output:
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+HMS_532> db.Doctor.find({'D_id':'001'})
+{
+  _id: ObjectId('65ca52b102eae18cdd4c6ad4'),
+  D_id: '001',
+  Name: 'Anand Raju',
+  Specialization: 'Dermatology',
+  Gender: 'Male',
+  Exp: '6 yrs',
+  Age: '35',
+  op_cost: '250'
+}
+
+Deleting Documents:
+HMS_532> db.Doctor.deleteOne({'D_id':'001'})
+Output:
+{
+  acknowledged: true,
+  deletedCount: 1
+}

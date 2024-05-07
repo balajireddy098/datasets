@@ -1,0 +1,113 @@
+Experiment-12
+Aim: Create an angular application to work with directives.
+sample.html
+<html>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+    <body>
+        <div ng-app=""><p>The calculated value is : {{ 5 + 5 * 8 / 2}}</p></div>
+    </body>
+</html>
+Output:
+ 
+
+init.html
+<html>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+    <body>
+        <div ng-app="" ng-init="myText='Hello CSEA!'">
+            <h1>{{myText}}</h1>
+            <p>This is ng-init directive ,which can be used in the application.</p>
+        </div>
+    </body>
+</html>
+Output:
+ 
+
+model.html
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+    <body>
+        <div ng-app="" ng-init="firstName='MEAN STACK'">
+            <p>Input something in the input box:</p>
+            <p>Name: <input type="text" ng-model="firstName"></p>
+            <p>You wrote: {{ firstName }}</p>
+        </div>
+    </body>
+</html>
+Output:
+ 
+
+ 
+repeat.html
+<html>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+    </script>
+    <body>
+        <div ng-app="" ng-init="names=['Apple','Cherry','Avacado','Orange']">
+            <p>Looping with ng-repeat:</p>
+            <ul>
+                <li ng-repeat=" x in names ">{{ x }}</li>
+            </ul>
+        </div>
+    </body>
+</html>
+Output:
+ 
+if.html
+<html>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+    <body ng-app="">
+        Keep HTML: <input type="checkbox" ng-model="myVar" ng-init="myVar = true">
+        <div ng-if="myVar">
+            <h1>Hello! ng-if</h1>
+        </div>
+        <p>If you uncheck the checkbox then DIV element will be removed.</p>
+        <p>If you check the checkbox then DIV element will return.</p>
+    </body> 
+</html>
+Output:
+ 
+ 
+class.html
+<html>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js">
+    </script>
+    <style>
+        .normal {
+            background-color: rgb(224, 173, 173);
+            padding: 20px;
+            font-family: 'Courier New';
+        }
+        .medium {
+            background-color: rgb(102, 183, 44);
+            padding: 30px;
+            font-family: 'Lucida Sans';    
+        }
+        .advance {
+            background-color: rgb(248, 186, 93);
+            padding: 40px;
+            font-family: 'algerian';
+        }
+    </style>
+    <body ng-app="">
+        <p>Choose a class:</p>
+        <select ng-model="home">
+            <option value="normal">Normal</option>  
+            <option value="medium">Medium</option>  
+            <option value="advance">Advance</option>  
+        </select>
+        <div ng-class="home">
+            <h1>Welcome CSE-A!</h1>
+        </div>
+    </body>
+</html>
+Output:
+ 
+ 
+ 
+ 
+ 

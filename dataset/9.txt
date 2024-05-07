@@ -1,0 +1,4 @@
+>npm install -g @angular/cli
+>ng new SampleApp
+>cd SampleApp
+>ng serve --open

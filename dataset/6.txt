@@ -1,0 +1,233 @@
+Experiment – 06                                                                                                
+Aim: Perform CRUD operations using ExpressJS and MongoDB
+Description:
+1.	Check whether nodejs is installed or not:
+              D:\>node-v
+2.	Install mongoDB
+3.	Install express
+             Eg:D:\expressjs\>
+4.	Install mongoose using command prompt or visual studios in same folder where express is installed.
+>npm install  mongoose@6.9.0
+PS D:\MEAN_532\exp6> npm install mongoose@6.9.0
+added 113 packages in 13s
+5 packages are looking for funding
+  run `npm fund` for details
+mongoose:
+It is an Object Data Modelling(OBM) library for MongoDB.
+5. Save all the programs in the same folder and to run the code:
+D:\expressjs\>nodeprogname.js
+
+connect.js
+var con = require("mongoose");
+con.set("strictQuery",false);  
+con.connect("mongodb://127.0.0.1:27017/passenger")
+.then(() =>console.log("Database connected"))
+.catch((Error) =>console.log(Error));
+
+output:
+PS D:\MEAN_532\exp6> node connect.js
+Database connected
+
+create.js
+var con = require("\mongoose");
+con.set("strictQuery",false);  
+con.connect("mongodb://127.0.0.1:27017/passenger")
+.then(() => console.log("Database connected"))
+.catch((Error) => console.log(Error));
+const passSchema = con.Schema({
+    Name : String, 
+    Aadhar_no : Number, 
+    Age : Number,
+    Gender : String,
+    Seat_no : Number,
+    Travel_Date : String,
+    From_To : String
+});
+const passData=con.model("passDetails",passSchema); 
+console.log("Collection created");
+
+output:
+PS D:\MEAN_532\exp6> node create.js
+Collection created
+Database connected
+
+
+
+insert.js
+var con = require("\mongoose");
+con.set("strictQuery",false);  
+con.connect("mongodb://127.0.0.1:27017/passenger")
+.then(() => console.log("Database connected"))
+.catch((Error) => console.log(Error));
+const passSchema = con.Schema({
+    Name : String, 
+    Aadhar_no : Number, 
+    Age : Number,
+    Gender : String,
+    Seat_no : Number,
+    Travel_Date : String,
+    From_To : String
+});
+const passData=con.model("passDetails",passSchema); 
+console.log("Collection loaded");
+const p1 = new passData({
+    Name : "Srinu",
+    Aadhar_no : 112233445566,
+    Age : 20,
+    Gender : "Male",
+    Seat_no : 29,
+    Travel_Date : "12/07/24",
+    From_To : "Gudlavalleru - Guntur"
+});
+const p2 = new passData({
+    Name : "Nagendra",
+    Aadhar_no : 111133446666,
+    Age : 20,
+    Gender : "Male",
+    Seat_no : 9,
+    Travel_Date : "12/07/24",
+    From_To : "Gudlavalleru - Guntur"
+});
+const p3 = new passData({
+    Name : "Jaswanth",
+    Aadhar_no : 222233447766,
+    Age : 20,
+    Gender : "Male",
+    Seat_no : 20,
+    Travel_Date : "07/07/24",
+    From_To : "vuyyuru - Tirupati"
+});
+p1.save();
+p2.save();
+p3.save();
+console.log("Data Inserted Successfully!");
+
+output:
+PS D:\MEAN_532\exp6> node insert.js
+Collection loaded
+Data Inserted Successfully!
+Database connected
+
+
+retrieve.js
+var con = require("\mongoose");
+con.set("strictQuery",false);  
+con.connect("mongodb://127.0.0.1:27017/passenger")
+.then(() => console.log("Database connected"))
+.catch((Error) => console.log(Error));
+const passSchema = con.Schema({
+    Name : String, 
+    Aadhar_no : Number, 
+    Age : Number,
+    Gender : String,
+    Seat_no : Number,
+    Travel_Date : String,
+    From_To : String
+});
+const passData=con.model("passDetails",passSchema); 
+const passDisplay = async() => {
+    const d = await passData.find();
+    console.log(d);
+};
+passDisplay(); 
+  
+output:
+PS D:\MEAN_532\exp6> node retrieve.js
+Database connected
+[
+  {
+    _id: new ObjectId("65f87f064a8fb9fb59d0556d"),
+    Name: 'Jaswanth',
+    Aadhar_no: 222233447766,
+    Age: 20,
+    Gender: 'Male',
+    Seat_no: 20,
+    Travel_Date: '07/07/24',
+    From_To: 'vuyyuru - Tirupati',
+    __v: 0
+  },
+  {
+    _id: new ObjectId("65f87f064a8fb9fb59d0556c"),
+    Name: 'Nagendra',
+    Aadhar_no: 111133446666,
+    Age: 20,
+    Gender: 'Male',
+    Seat_no: 9,
+    Travel_Date: '12/07/24',
+    From_To: 'Gudlavalleru - Guntur',
+    __v: 0
+  },
+  {
+    _id: new ObjectId("65f87f064a8fb9fb59d0556b"),
+    Name: 'Srinu',
+    Aadhar_no: 112233445566,
+    Age: 20,
+    Gender: 'Male',
+    Seat_no: 29,
+    Travel_Date: '12/07/24',
+    From_To: 'Gudlavalleru - Guntur',
+    __v: 0
+  }
+]
+
+update.js
+var con = require("\mongoose");
+con.set("strictQuery",false);  
+con.connect("mongodb://127.0.0.1:27017/passenger")
+.then(() => console.log("Database connected"))
+.catch((Error) => console.log(Error));
+const passSchema = con.Schema({
+    Name : String, 
+    Aadhar_no : Number, 
+    Age : Number,
+    Gender : String,
+    Seat_no : Number,
+    Travel_Date : String,
+    From_To : String
+});
+const passData=con.model("passDetails",passSchema); 
+const passDisplay = async() => {
+    const d = await passData.updateOne({Name:"Srinu"},{$set:{Age:21}});
+    console.log(d);
+};
+passDisplay();
+
+output:
+PS D:\MEAN_532\exp6> node update.js
+Database connected
+{
+  acknowledged: true,
+  modifiedCount: 1,
+  upsertedId: null,
+  upsertedCount: 0,
+  matchedCount: 1
+}
+
+delete.js
+var con = require("\mongoose");
+con.set("strictQuery",false);  
+con.connect("mongodb://127.0.0.1:27017/passenger")
+.then(() => console.log("Database connected"))
+.catch((Error) => console.log(Error));
+const passSchema = con.Schema({
+    Name : String, 
+    Aadhar_no : Number, 
+    Age : Number,
+    Gender : String,
+    Seat_no : Number,
+    Travel_Date : String,
+    From_To : String
+});
+const passData=con.model("passDetails",passSchema); 
+const passDisplay = async() => {
+    const d = await passData.deleteOne({Name:"Jaswanth"});
+    console.log(d);
+};
+passDisplay();
+
+output:
+PS D:\MEAN_532\exp6> node delete.js
+Database connected
+{ acknowledged: true, deletedCount: 1 }
+
+ 

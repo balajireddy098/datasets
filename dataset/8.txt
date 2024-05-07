@@ -1,0 +1,60 @@
+student.ts
+class Student
+{
+    studcode:number 
+    studname:string 
+    grade:string
+
+    constructor(code:number,name:string,grade:string)
+    { 
+        this.studcode=code 
+        this.studname=name
+        this.grade=grade
+    }
+    display():void
+    {
+        console.log("Name: ",this.studname) 
+        console.log("Code: ",this.studcode) 
+        console.log("Grade: ",this.grade)
+    }
+}
+let obj1=new Student(532, 'Manohar', 'A') 
+let obj2=new Student(509, 'Nagendra', 'A+') 
+let obj3=new Student(520, 'Jaswanth', 'A') 
+obj1.display()
+obj2.display()
+obj3.display()
+
+student.js
+var Student = /** @class */ (function () {
+    function Student(code, name, grade) {
+        this.studcode = code;
+        this.studname = name;
+        this.grade = grade;
+    }
+    Student.prototype.display = function () {
+        console.log("Name: ", this.studname);
+        console.log("Code: ", this.studcode);
+        console.log("Grade: ", this.grade);
+    };
+    return Student;
+}());
+var obj1 = new Student(532, 'Manohar', 'A');
+var obj2 = new Student(509, 'Nagendra', 'A+');
+var obj3 = new Student(520, 'Jaswanth', 'A');
+obj1.display();
+obj2.display();
+obj3.display();
+
+output:
+PS D:\MEAN_532\typescript> tsc student.ts
+PS D:\MEAN_532\typescript> node student.js
+Name:  Manohar
+Code:  532
+Grade:  A
+Name:  Nagendra
+Code:  509
+Grade:  A+
+Name:  Jaswanth
+Code:  520
+Grade:  A

@@ -1,0 +1,74 @@
+Experiment-5
+Aim: Install Express and create an application.
+
+Installation of Express:
+
+ npm install express
+
+ npm install express -save 
+
+ npm install body-parser -save
+
+ npm install cookie-parser -save
+
+ npm install multer -save
+ 
+
+sample.js
+var express = require('express');
+var app = express();
+app.get('/', function(req, res) {
+    res.send('<h1>Hello Everyone!.. WELCOME TO MST LAB!!</h1>');
+})
+var server = app.listen(8000, function() {
+    var host = server.address().address
+    var port = server.address().port
+    console.log("Sample app listening at http://%s:%s", host, port)
+})
+
+Output:
+ 
+
+ 
+
+book.js
+// Import required modules
+const express = require('express');
+// Create Express app
+const app = express();
+const port = 9000;
+// Sample JSON data
+const books = [
+  { id: 1, title: 'The Adventures of Tom Sawyer', author: 'Mark Twain' },
+  { id: 2, title: 'Treasure Island', author: 'Robert Louis Stevenson' },
+  { id: 3, title: 'The Wings of Fire', author:'A.P.J.Abdul Kalam' },
+  {id:4,title:'Autobiography of an unknown india', author:'Niradh C. Chaudhari'} 
+];
+// Route to get all books
+app.get('/books', (req, res) => {
+  res.json(books);
+});
+// Route to get a specific book by ID
+app.get('/books/:id', (req, res) => {
+      const id = parseInt(req.params.id);
+      const book = books.find(book => book.id === id);
+      if (book) {
+        res.json(book);
+      } else {
+        res.status(404).json({ error: 'Book not found' });
+      }
+    });
+    // Start the server
+    app.listen(port, () => {
+      console.log('Server running at http://localhost:%s/',port);
+    });
+Output:
+
+ 
+
+ 
+
+ 
+
+
+
